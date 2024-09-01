@@ -4,21 +4,23 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+
 @Entity
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Booking extends BaseModel {
+public class Booking extends BaseModel{
+
+    @Enumerated(value = EnumType.STRING)
+    private BookingStatus bookingStatus;
+
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date startTime;
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date endTime;
-
-    @Enumerated(value = EnumType.STRING)
-    private BookingStatus bookingStatus;
 
     private Long totalDistance;
 
@@ -27,5 +29,8 @@ public class Booking extends BaseModel {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Passenger passenger;
+
+    @OneToOne
+    private ExactLocation endLocation;
 
 }
