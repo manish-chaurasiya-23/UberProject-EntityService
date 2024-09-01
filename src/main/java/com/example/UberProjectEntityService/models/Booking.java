@@ -17,6 +17,9 @@ public class Booking extends BaseModel {
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date endTime;
 
+    @Enumerated(value = EnumType.STRING)
+    private BookingStatus bookingStatus;
+
     private Long totalDistance;
 
     @ManyToOne(fetch = FetchType.LAZY)

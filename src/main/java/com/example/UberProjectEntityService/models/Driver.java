@@ -22,6 +22,8 @@ public class Driver extends BaseModel{
 
     private String aadharCard;
 
+    private Double rating;
+
     @OneToMany(mappedBy = "driver")
     private List<Booking> bookings;
 }
